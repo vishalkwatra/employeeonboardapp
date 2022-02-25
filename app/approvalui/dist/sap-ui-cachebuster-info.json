@@ -1,17 +1,17 @@
 {
-  "index.html": 1645722674491,
   "model/models.js": 1645722674491,
+  "i18n/i18n.properties": 1645722683935,
   "utils/locate-reuse-libs.js": 1645722674495,
-  "manifest.json": 1645722817510,
-  "controller/View1.controller.js": 1645722674503,
+  "manifest.json": 1645761137522,
+  "controller/View1.controller.js": 1645757844651,
   "Component.js": 1645722674487,
-  "manifest-bundle.zip": 1645722817519,
-  "Component-preload.js": 1645722817736,
-  "controller/View1-dbg.controller.js": 1645722674503,
+  "manifest-bundle.zip": 1645761137531,
+  "Component-preload.js": 1645761137743,
   "model/models-dbg.js": 1645722674491,
   "utils/locate-reuse-libs-dbg.js": 1645722674495,
+  "controller/View1-dbg.controller.js": 1645757844651,
   "Component-dbg.js": 1645722674487,
-  "view/View1.view.xml": 1645722674499,
+  "view/View1.view.xml": 1645757828691,
   "css/style.css": 1645722674499,
-  "i18n/i18n.properties": 1645722683935
+  "index.html": 1645722674491
 }

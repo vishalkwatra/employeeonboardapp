@@ -77,6 +77,13 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+- name: workflow-approval-module
+  type: com.sap.application.content
+  path: app/workflow-approval-module
+  requires:
+  - name: workflow
+    parameters:
+      content-target: true
 resources:
 - name: employeeonboard-db
   type: com.sap.xs.hdi-container
@@ -87,6 +94,8 @@ resources:
     hdi-service-name: ${service-name}
 - name: employeeonboard-destination-service
   type: org.cloudfoundry.managed-service
+  requires:
+    - name: srv-api 
   parameters:
     config:
       HTML5Runtime_enabled: true
@@ -98,6 +107,14 @@ resources:
             ProxyType: Internet
             Type: HTTP
             URL: https://ui5.sap.com
+          - Name: srv-backend
+            Description: CAP service
+            Authentication: NoAuthentication
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true   
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
@@ -116,6 +133,11 @@ resources:
     service: xsuaa
     service-name: employeeonboard-xsuaa-service
     service-plan: application
+- name: workflow
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: workflow
+    service-plan: lite
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

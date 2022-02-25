@@ -1,1 +1,1 @@
-sap.ui.define(["sap/ui/core/mvc/Controller"],function(n){"use strict";return n.extend("approvalui.controller.View1",{onInit:function(){}})});
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("approvalui.controller.View1",{onInit:function(){var e=new sap.ui.model.json.JSONModel;e.setData({employee:{firstName:"test",lastName:"",country:"",hireDate:new Date,jobTitle:""}});this.getView().setModel(e,"employee");var t="/employee/";this.getView().bindElement("employee>"+t)},onPressSend:function(){}})});
