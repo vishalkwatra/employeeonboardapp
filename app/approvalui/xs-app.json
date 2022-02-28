@@ -3,17 +3,17 @@
     "authenticationMethod": "route",
     "routes": [
         {
-            "authenticationType": "none",
-            "csrfProtection": false,
-            "source": "^/employee(.*)$",
-            "destination": "srv-backend"
-        },
-        {
             "source": "^/bpmworkflowruntime/(.*)$",
             "target": "/$1",
             "service": "com.sap.bpm.workflow",
             "endpoint": "workflow_rest_url",
             "authenticationType": "xsuaa"
+        },
+        {
+            "authenticationType": "none",
+            "csrfProtection": false,
+            "source": "^/employee(.*)$",
+            "destination": "srv-backend"
         },
         {
             "source": "^/resources/(.*)$",

@@ -23,8 +23,48 @@ sap.ui.define([
                 var sPath = "/employee/";
                 this.getView().bindElement('employee>' + sPath);
             },
-            onPressSend: function(){
-                
+            onPressSend: function () {
+                $.ajax({
+                    url: "/bpmworkflowruntime/v1/xsrf-token",
+                    method: "GET",
+                    headers: {
+                        "X-CSRF-Token": "Fetch"
+                    },
+                    async: false,
+                    success: function (result, xhr, data) {
+                        console.log(result);
+                        console.log(data);
+                    }
+                });
+                var dataPayLoad =
+                {
+                    "definitionId": "workflowapproval",
+                    "context": {
+                        "empData": {
+                            "firstName": "Carla",
+                            "lastName": "Grant",
+                            "country": "India",
+                            "hireDate": "2020-07-11",
+                            "jobTitle": "General Manager, Industries"
+                        }
+                    }
+                };
+                $.ajax({
+                    url: "/employeeonboard/bpmworkflowruntime/v1/workflow-instances",
+                    type: "POST",
+                    data: JSON.stringify(dataPayLoad),
+                    headers: {
+                        "X-CSRF-Token": token,
+                        "Content-Type": "application/json"
+                    },
+                    async: false,
+                    success: function (data) {
+                        console.log("The workflow is started");
+                    },
+                    error: function (data) {
+                        console.log("Error Starting", data);
+                    }
+                });
             }
         });
     });
